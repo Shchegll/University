@@ -22,7 +22,7 @@ public:
                     postfix += operatorStack.pop();
                     postfix += " ";
                 }
-                operatorStack.push(token); // Добавляем полное имя функции или оператор
+                operatorStack.push(token); 
             }
             else if (token == "(") {
                 operatorStack.push("(");
@@ -32,7 +32,7 @@ public:
                     postfix += operatorStack.pop();
                     postfix += " ";
                 }
-                operatorStack.pop();  // Удаляем открывающую скобку
+                operatorStack.pop();  
             }
         }
 
@@ -55,14 +55,14 @@ public:
             }
             else if (isOperator(token)) {
                 if (token.length() == 1) {
-                    // Для обычных бинарных операторов
+                   
                     double operand2 = operandStack.pop();
                     double operand1 = operandStack.pop();
                     double result = applyOperator(operand1, operand2, token[0]);
                     operandStack.push(result);
                 }
                 else {
-                    // Унарные операторы (например, cos, sin)
+                   
                     double operand = operandStack.pop();
                     double result = applyUnaryOperator(operand, token);
                     operandStack.push(result);
@@ -71,11 +71,11 @@ public:
         }
 
         if (operandStack.isEmpty()) {
-            std::cerr << "Ошибка: невозможно вычислить результат" << std::endl;
-            return 0.0; // Возврат значения по умолчанию
+            std::cerr << "ГЋГёГЁГЎГЄГ : Г­ГҐГўГ®Г§Г¬Г®Г¦Г­Г® ГўГ»Г·ГЁГ±Г«ГЁГІГј Г°ГҐГ§ГіГ«ГјГІГ ГІ" << std::endl;
+            return 0.0; 
         }
 
-        return operandStack.top(); // Возвращаем верхний элемент стека с результатом
+        return operandStack.top(); 
     }
 
 private:
@@ -94,7 +94,7 @@ private:
             return 3;
         }
         else if (op == "sin" || op == "cos") {
-            return 4; // Приоритет унарных операторов (косинус и синус)
+            return 4; 
         }
         return 0;
     }
