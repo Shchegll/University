@@ -1,6 +1,6 @@
 #include <iostream>
 #include <queue>
-#include <stack>
+#include <Stack.h>
 #include <fstream>
 #include <string>
 
@@ -121,7 +121,7 @@ int main()
     ifstream File("input.txt");
 
     if (!File.is_open()) {
-        cout << "Îøèáêà îòêðûòèÿ ôàéëà." << endl;
+        cout << "ÃŽÃ¸Ã¨Ã¡ÃªÃ  Ã®Ã²ÃªÃ°Ã»Ã²Ã¨Ã¿ Ã´Ã Ã©Ã«Ã ." << endl;
         return 1;
     }
 
@@ -130,26 +130,26 @@ int main()
 
     File.close();
 
-    cout << "Òî÷íàÿ çàïèñü: " << expression << endl;;
+    cout << "Ã’Ã®Ã·Ã­Ã Ã¿ Ã§Ã Ã¯Ã¨Ã±Ã¼: " << expression << endl;;
 
 
-    cout << "Ñ÷èòûâàíèå ôàéëà: ";
+    cout << "Ã‘Ã·Ã¨Ã²Ã»Ã¢Ã Ã­Ã¨Ã¥ Ã´Ã Ã©Ã«Ã : ";
     Node* root = constructTree(expression);
     preorder(root);
     cout << endl;
 
-    cout << "Îáõîä â øèðèíó: ";
+    cout << "ÃŽÃ¡ÃµÃ®Ã¤ Ã¢ Ã¸Ã¨Ã°Ã¨Ã­Ã³: ";
     printBreadthFirst(root);
 
-    cout << "Ïðåôèêñíûé îáõîä: ";
+    cout << "ÃÃ°Ã¥Ã´Ã¨ÃªÃ±Ã­Ã»Ã© Ã®Ã¡ÃµÃ®Ã¤: ";
     printPreorder(root);
     cout << endl;
 
-    cout << "Èíôèêñíûé îáõîä: ";
+    cout << "ÃˆÃ­Ã´Ã¨ÃªÃ±Ã­Ã»Ã© Ã®Ã¡ÃµÃ®Ã¤: ";
     printInorder(root);
     cout << endl;
 
-    cout << "Ïîñòôèêñíûé îáõîä: ";
+    cout << "ÃÃ®Ã±Ã²Ã´Ã¨ÃªÃ±Ã­Ã»Ã© Ã®Ã¡ÃµÃ®Ã¤: ";
     printPostorder(root);
     cout << endl;
 
