@@ -17,48 +17,93 @@ void insertionSort(int* arr, int left, int right) {
     }
 }
 
-void merge(int* arr, int start, int mid, int end) {
-    int len1 = mid - start + 1;
-    int len2 = end - mid;
-    int* left = new int[len1];
-    int* right = new int[len2];
-
-    for (int i = 0; i < len1; i++) {
-        left[i] = arr[start + i];
-    }
-    for (int i = 0; i < len2; i++) {
-        right[i] = arr[mid + 1 + i];
-    }
-
-    int i = 0, j = 0, k = start;
-
-    while (i < len1 && j < len2) {
-        if (left[i] <= right[j]) {
-            arr[k] = left[i];
+void merge(DynamicArray<int>& mass, int l, int m, int r)
+{
+    int* Left = new int[m - l + 1];
+    int* Right = new int[r - m];
+    for (int i = 0; i < m - l + 1; i++)
+        Left[i] = mass[l + i];
+    for (int i = 0; i < r - m; i++)
+        Right[i] = mass[m + 1 + i];
+    int i = 0, j = 0, k = l, testL = 0, testR = 0;
+    while (i < m - l + 1 && j < r - m)
+    {
+        if (Left[i] <= Right[j]) {
+            mass[k] = Left[i];
             i++;
+            testL++;
+            testR = 0;
         }
         else {
-            arr[k] = right[j];
+            mass[k] = Right[j];
             j++;
+            testR++;
+            testL = 0;
         }
         k++;
     }
 
-    while (i < len1) {
-        arr[k] = left[i];
-        i++;
-        k++;
+    if (testL >= 7)  //галоп начинается тут, после того как из массива Left были взяты 7 раз элементы
+    {
+        int gallopStep = 1;
+        bool col_mass_bro = 1;
+        for (int g = i; g < m - l + 1;)
+        {
+            if (Left[g] <= Right[j])
+            {
+                g += gallopStep;
+                gallopStep *= 2;
+            }
+            else
+            {
+                col_mass_bro = 0;
+                testL = 0;
+                testR = 0;
+            }
+        }
+        if (col_mass_bro)
+        {
+            for (int g = 0; g < m - l + 1; g++)
+            {
+                mass[k] = Left[g];
+                k++;
+                i++;
+                testL = 0;
+                testR = 0;
+            }
+        }
+    }
+    else if (testR >= 7) //галоп начинается тут
+    {
+        int gallopStep = 1;
+        bool col_mass_bro = 1;
+        for (int g = i; g < r - m;)
+        {
+            if (Right[g] <= Left[i])
+            {
+                g += gallopStep;
+                gallopStep *= 2;
+            }
+            else
+            {
+                col_mass_bro = 0;
+                testL = 0;
+                testR = 0;
+            }
+        }
+        if (col_mass_bro)
+        {
+            for (int g = 0; g < r - m; g++)
+            {
+                mass[k] = Left[g];
+                k++;
+                j++;
+                testL = 0;
+                testR = 0;
+            }
+        }
     }
 
-    while (j < len2) {
-        arr[k] = right[j];
-        j++;
-        k++;
-    }
-
-    delete[] left;
-    delete[] right;
-}
 
 void timSort(int* arr, int n) {
     Stack<pair<int, int>> Stack;
