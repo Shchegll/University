@@ -1,0 +1,19 @@
+.table {
+    width: 500px;
+    border-collapse: collapse; 
+}
+
+.table td, .table th {
+    border: 1px solid #ccc; 
+    padding: 5px 10px; 
+}
+
+.table thead {
+    background-color: #f0f1f4; 
+}
+
+.table tfoot {
+    background-color: #121212; 
+    color: #fff; 
+    text-align: right; 
+}
