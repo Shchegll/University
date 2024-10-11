@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e8dddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.composition {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    background-image: url('/Users/yarik_sglv/University/3_year_of_study/Web_project/Lab_3/img/bg.png'); /* Убедитесь, что путь правильный */
+    background-size: cover; /* Фон растягивается на весь блок */
+    background-position: center;
+    border: 1px solid #ccc; /* Чтобы границы блока были видны */
+}
+
+.element {
+    position: absolute;
+}
+
+/* Настройки для каждого элемента */
+.planet1 {
+    width: 100px;
+    top: 22px;
+    left: 180px;
+    z-index: 1;
+}
+
+.planet2 {
+    width: 140px;
+    top: 60px;
+    left: 80px;
+    z-index: 2;
+}
+
+.planet3 {
+    width: 240px;
+    bottom: 15px;
+    left: 120px;
+    z-index: 4;
+}
+
+.planet4 {
+    width: 55px;
+    top: 80px;
+    right: 110px;
+    z-index: 2;
+}
+
+.spaceship {
+    width: 35px;
+    bottom: 210px;
+    left: 145px;
+    z-index: 3;
+}
+
+.superhero {
+    width: 55px;
+    bottom: 0px;
+    right: 30px;
+    z-index: 5;
+}
+
+.alien {
+    width: 60px;
+    bottom: 50px;
+    left: 105px;
+    z-index: 5;
+}
