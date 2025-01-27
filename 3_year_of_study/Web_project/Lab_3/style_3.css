@@ -12,17 +12,16 @@ body {
     position: relative;
     width: 600px;
     height: 400px;
-    background-image: url('/Users/yarik_sglv/University/3_year_of_study/Web_project/Lab_3/img/bg.png'); /* Убедитесь, что путь правильный */
-    background-size: cover; /* Фон растягивается на весь блок */
+    background-image: url('/Users/yarik_sglv/University/3_year_of_study/Web_project/Lab_3/img/bg.png'); 
+    background-size: cover; 
     background-position: center;
-    border: 1px solid #ccc; /* Чтобы границы блока были видны */
+    border: 1px solid #ccc; 
 }
 
 .element {
     position: absolute;
 }
 
-/* Настройки для каждого элемента */
 .planet1 {
     width: 100px;
     top: 22px;

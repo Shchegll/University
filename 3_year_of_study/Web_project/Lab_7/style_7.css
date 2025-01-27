@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; 
+}
+
+.car-info {
+    border: 2px solid red; 
+    padding: 10px;
+    margin: 20px;
+    width: 300px; 
+    height: 400px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.car-info img {
+    width: 100%;
+    height: auto;
+    max-height: 200px; 
+    margin-top: 30px;
+    object-fit: cover; 
+}
+
+@media (max-width: 480px) {
+    body {
+        color: rgb(0, 0, 0);
+    }
+    #responsive-text {
+        content: "Текст для экрана шириной до 480px";
+    }
+}
+
+@media (min-width: 481px) and (max-width: 800px) {
+    body {
+        color: rgb(0, 0, 0);
+    }
+    #responsive-text {
+        content: "Текст для экрана шириной от 481px до 800px";
+    }
+}
+
+@media (min-width: 801px) {
+    body {
+        color: rgb(0, 0, 0);
+    }
+    #responsive-text {
+        content: "Текст для экрана шириной более 800px";
+    }
+}
