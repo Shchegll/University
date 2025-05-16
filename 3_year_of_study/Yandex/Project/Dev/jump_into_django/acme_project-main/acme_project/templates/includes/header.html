@@ -1,0 +1,52 @@
+<!-- templates/includes/header.html -->
+<header>
+  <nav class="navbar shadow-sm">
+    <div class="container">
+      {% with request.resolver_match.view_name as view_name %}
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link {% if view_name == 'pages:homepage' %} active {% endif %}"
+              href="{% url 'pages:homepage' %}">
+              Главная
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if view_name == 'birthday:create' %} active {% endif %}"
+              href="{% url 'birthday:create' %}">
+              Калькулятор дней рождения
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if view_name == 'birthday:list' %} active {% endif %}" href="{% url 'birthday:list' %}">
+              Cписок дней рождения
+            </a>
+          </li>
+          {% if user.is_authenticated %}
+            <span class="navbar-text">Пользователь: <b>{{ user.username }}</b></span>
+            <!-- Новая кнопка -->
+            <li class="nav-item">
+              <a class="nav-link{% if view_name == 'password_change' %} active {% endif %}"
+                href="{% url 'password_change' %}">Изменить пароль</a>
+            </li>
+            <li class="nav-item">
+              <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="nav-link btn btn-link" style="border: none; background: none; padding: 0.5rem 1rem;">
+                    Выйти
+                </button>
+              </form>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link{% if view_name == 'login' %} active {% endif %}" href="{% url 'login' %}">Войти</a>
+            </li>
+            <!-- Новая кнопка -->
+            <li class="nav-item">
+              <a class="nav-link{% if view_name == 'registration' %} active {% endif %}" href="{% url 'registration' %}">Регистрация</a>
+            </li>
+          {% endif %}
+        </ul>
+      {% endwith %}
+    </div>
+  </nav>
+</header>

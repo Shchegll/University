@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <title>Проект ACME</title>
+    <!-- Подключаем библиотеку django_bootstrap5.
+      Это нужно сделать во всех шаблонах,
+      где будут применяться теги этой библиотеки. -->
+    {% load django_bootstrap5 %}
+    <!-- Загружаем файл с CSS-стилями по умолчанию.
+      Это делается только в базовом шаблоне. -->
+    {% bootstrap_css %}
+  </head>
+  <body>
+    {% include "includes/header.html" %}
+    <div class="container pt-5">
+      {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>
