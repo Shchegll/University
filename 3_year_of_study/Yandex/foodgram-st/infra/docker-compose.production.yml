@@ -1,0 +1,49 @@
+version: '3.8'
+
+volumes:
+  pg_data:
+  static:
+  media:
+
+services:
+  db:
+    image: postgres:13
+    env_file: .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+  backend:
+    image: Shchegll/foodgram_bac
+    env_file: .env
+    volumes:
+      - static:/app/static/
+      - media:/app/media/
+
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    depends_on:
+      - db
+  frontend:
+    image: Shchegll/foodgram_front
+    env_file: .env
+    command: cp -r /app/build/. /static/
+    volumes:
+      - static:/static/
+    depends_on:
+      - backend
+  nginx:
+    image: nginx:1.21
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ../frontend/build:/usr/share/nginx/html/
+      - ../docs/:/usr/share/nginx/html/api/docs/
+      - static:/var/html/static/
+      - media:/var/html/media/
+    depends_on:
+      - frontend
+    restart: always
